@@ -1,8 +1,17 @@
+#
 # SPRING22_CC_110072
 
-| Student Name  | Student ID | Description |
-| ---- | --- | --- |
-| Areeba Hussain | 64057  | Content Cell  |
-| Muhammad Hammad  | 64078  | Content Cell  |
-| Junaid  | 64  | Content Cell  |
-| Saad Sheikh  | 64105  | Content Cell  |
+
+
+| Student Name  | Student ID |
+| ---- | --- | 
+| Areeba Hussain | 64057  | 
+|  |  | 
+|  |  | 
+|  |  | 
+
+#
+## Description
+
+### Areeba Hussain (64057) *Leader* :
+I'm Areeba Hussain, BS-CS student in PAF-KIET. Currently completed my 7th semster and enrolled in the summer session of 2022, studying Compiler Construction and Network Programming.
