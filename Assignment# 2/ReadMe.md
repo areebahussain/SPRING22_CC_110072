@@ -2,7 +2,7 @@
  ###Flex Issues:
 - Flex Environmental issues.
 - Flex File run out open issues through cmd.
-- 
+
  ###Flex Issues We Resolved:
 - For enviromental issues we skip the environment of ubuntu and switch to window command line. We set the flex environments in windows with the help of codeblocks and GnuWin32 by setting there environment variables.
 - We save the notepad or text file with the Allfiles extensions or by running these we read some documentations of flex from diffrent forums.
