@@ -1,1 +1,46 @@
 ###Code
+### Program For Valid Email checking
+
+%{
+
+#undef yywrap
+#define yywrap() 1	
+int todo;
+
+%}
+
+%
+{
+  int todo = 0; %
+} %
+
+% [a - z.0 - 9 _] + @[a - z] + ".com" | ".in"
+todo = 1; %
+%
+
+main() {
+  printf("Enter The Email For Checking:");
+  yylex();
+  if (todo == 1)
+    printf("The Email is Valid");
+  else
+    printf("The Email is Not Valid");
+}
+
+### Program For Valid Phone-number checking
+
+%%
+  
+[1-9][0-9]{9} {printf("\nPhonenumber Valid\n");}
+  
+.+ {printf("\nPhonenumber Invalid\n");}
+  
+%%
+
+int main() 
+{
+    printf("\nEnter Phonenumber For Checking : ");
+    yylex();
+    printf("\n");
+    return 0;
+}
