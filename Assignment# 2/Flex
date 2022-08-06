@@ -1,22 +1,22 @@
-###Code
+### Code
 ### Program For Valid Email checking
 
-%{
+%%{
 
 #undef yywrap
 #define yywrap() 1	
 int todo;
 
-%}
+%%}
 
-%
+%%
 {
   int todo = 0; %
-} %
+} %%
 
-% [a - z.0 - 9 _] + @[a - z] + ".com" | ".in"
-todo = 1; %
-%
+%% [a - z.0 - 9 _] + @[a - z] + ".com" | ".in"
+todo = 1; %%
+%%
 
 main() {
   printf("Enter The Email For Checking:");
