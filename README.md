@@ -1,7 +1,7 @@
 #
 # SPRING22_CC_110072
 
-heyyy how areyou
+
 
 | Student Name  | Student ID |
 | ---- | --- | 
