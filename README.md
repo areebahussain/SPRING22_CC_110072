@@ -20,7 +20,7 @@
 I'm Areeba Hussain, BS-CS student in PAF-KIET. Currently completed my 7th semster and enrolled in the summer session of 2022, studying Compiler Construction and Network Programming.
 
 ### Saad Sheikh (64105) *Participant* :
-I'm saad sheikh, BS-CS student in PAF-KIET. Currently completed my 7th semster and enrolled in the summer session of 2022, studying compiler construction and network programming.
+I'm Saad Sheikh, BS-CS Student in PAF-KIET. Currently Completed My 7th Semster and Enrolled in the Summer Session of 2022, Studying Compiler Construction and Network Programming.
 
 ### Muhammad Hammad (64078) *Participant* :
 I'm Hammad, BS-CS student in PAF-KIET in final year, My area of interest is application development. This semester i am studying Compiler Construction and Network Programming. Want to learn new things through CC.
