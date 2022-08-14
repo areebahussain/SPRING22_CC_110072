@@ -1,0 +1,158 @@
+#include <stdint.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <string.h>
+#define CAPACITY 50000 //Size of the Hash Table
+
+/* Struct And Hold Each Entry For Proceeding */
+struct entry_s
+{
+	char* lexeme; 
+	int token_name;
+	struct entry_s* successor;
+};
+
+typedef struct entry_s entry_t;
+
+/*Hash Table Creation*/
+entry_t** create_table()
+{
+        /* Declare The Entry Of Indexes Pointer */
+	entry_t** htp= NULL; 
+
+	/* Allocation Of Memory Accordingly */
+	if( ( htp = malloc( sizeof( entry_t* ) * CAPACITY ) ) == NULL )
+    	return NULL;
+
+	int i;
+	
+        /* For The Initial For Row We Need To Initialize All With Null */
+    for( i = 0; i < CAPACITY; i++ )
+	{
+		htp[i] = NULL;
+	}
+
+	return htp;
+}
+
+/*Get The Hash By Algorithm*/
+uint32_t hash( char *lexeme )
+{
+	size_t i;
+	uint32_t hash;
+
+	for ( hash = i = 0; i < strlen(lexeme); ++i ) {
+        hash += lexeme[i];
+        hash += ( hash << 10 );
+        hash ^= ( hash >> 6 );
+    }
+	hash += ( hash << 3 );
+	hash ^= ( hash >> 11 );
+    hash += ( hash << 15 );
+
+	return hash % HASH_TABLE_SIZE; // return an index in [0, HASH_TABLE_SIZE)
+}
+
+/*Proceed To For An Entry Of A Lexeme,Token Pair We Need To Get*/
+entry_t *create_entry( char *lexeme, int token_name )
+{
+	entry_t *newentry;
+
+	/*Allocate Space For Every New Entry*/
+	if( ( newentry = malloc( sizeof( entry_t ) ) ) == NULL ) {
+		return NULL;
+	}
+	/* Duplicate The Lexeme To Newentry Location*/
+	if( ( newentry->lexeme = strdup( lexeme ) ) == NULL ) {
+		return NULL;
+	}
+
+	newentry->token_name = token_name;
+	newentry->successor = NULL;
+
+	return newentry;
+}
+
+/* Searching For Entries Containing The Lexeme.*/
+entry_t* search( entry_t** hash_table_ptr, char* lexeme )
+{
+	uint32_t idx = 0;
+	entry_t* myentry;
+    
+	idx = hash( lexeme );
+
+	myentry = hash_table_ptr[idx];
+	
+	while( myentry != NULL && strcmp( lexeme, myentry->lexeme ) != 0 )
+	{
+		myentry = myentry->successor;
+	}
+
+        /* Lexeme Found Or Not Found Scopes Or Condition*/
+	if(myentry == NULL) 
+		return NULL;
+	
+	else 
+		return myentry;
+
+}
+
+/* Insert Single Entry In Hashtable*/
+void insert( entry_t** hash_table_ptr, char* lexeme, int token_name )
+{
+     /*In Case Lexeme Is Already In Hash Table Return Nothing*/
+     if( search( hash_table_ptr, lexeme ) != NULL) 
+	    return;
+
+	uint32_t idx;
+	entry_t* newentry = NULL;
+	entry_t* head = NULL;
+
+	idx = hash( lexeme ); // Get the index for this lexeme based on the hash function
+	newentry = create_entry( lexeme, token_name ); // Create an entry using the <lexeme, token> pair
+
+        /*It's Work's Like That Try And Catch*/
+
+	if(newentry == NULL) 
+	{
+		printf("The New Entry Will Not Created");
+		exit(1);
+	}
+
+	head = htp[idx];
+        
+/* First Time When The Lexeme Matches The Hash Index */
+	if(head == NULL)
+	{
+		htp[idx] = newentry;
+	}
+	else // if not, add this entry to the head
+	{
+		newentry->successor = htp[idx];
+		htp[idx] = newentry;
+	}
+}
+
+/* Traverse The Hash Table And Print And The Entities We Get*/
+void display(entry_t** htp)
+{
+	int i;
+	entry_t* traverser;
+    printf("\n\n");
+    printf("\t < lexeme , token >\n");
+    printf("\n");
+
+	for( i=0; i < CAPACITYi++)
+	{
+		traverser = htp[i];
+
+		while( traverser != NULL)
+		{
+			printf("< %-30s, %3d >\n", traverser->lexeme, traverser->token_name);
+			traverser = traverser->successor;
+		}
+	}
+    printf("=====================\n");
+   
+}
