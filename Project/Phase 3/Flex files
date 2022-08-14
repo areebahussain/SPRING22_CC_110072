@@ -1,1 +1,10 @@
+/*Initiate The Parsing */
 
+%{
+ Libraries Included 
+#include stdlib.h
+#include stdio.h
+#include symboltable.h
+#include tokens.h
+
+/*Declaration of Initiative Variables*/
