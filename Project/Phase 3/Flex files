@@ -1,7 +1,7 @@
 /*Initiate The Parsing */
 
 %{
- Libraries Included 
+Libraries Included 
 #include stdlib.h
 #include stdio.h
 #include symboltable.h
