@@ -1,4 +1,4 @@
--The language we selected is mini C.
+- The language we selected is mini C.
 - The language soecification for thatlanguage is given below,
    - http://compilersatkiet.22web.org/lang(2).pdf?i=2
 
