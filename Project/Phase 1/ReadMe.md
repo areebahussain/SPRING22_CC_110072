@@ -7,16 +7,17 @@
 -  Some statements:
 
     - Break Statement:
-
+    
        char c;
-       for(;;) {
-       printf_s( "\nPress any key, Q to quit: " );
-       scanf_s("%c", &c);
-       if (c == 'Q')
+       for(;;) 
+       {
+         printf_s( "\nPress any key, Q to quit: " );
+         scanf_s("%c", &c);
+         if (c == 'Q')
           break;
-           }
-         }
-
+        }
+        
+        
 - Switch Statement:
 
        switch( c )
