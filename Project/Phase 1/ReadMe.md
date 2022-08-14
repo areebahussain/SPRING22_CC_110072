@@ -1,1 +1,5 @@
+1-The language we selected is mini C.
+2- The language soecification for thatlanguage is given below,
+   - http://compilersatkiet.22web.org/lang(2).pdf?i=2
 
+#### Code Example For The Selected Language:
