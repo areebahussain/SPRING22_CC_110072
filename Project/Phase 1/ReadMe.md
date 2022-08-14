@@ -8,15 +8,16 @@
 
     - Break Statement:
     
+       ```
        char c;
-       for(;;) {
+       for(;;)
+       {
        printf_s( "\nPress any key, Q to quit: " );
        scanf_s("%c", &c);
        if (c == 'Q')
-          break;
-           }
-         }
-        
+       break;
+       }
+       ``` 
         
 - Switch Statement:
 
