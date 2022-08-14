@@ -27,7 +27,7 @@ entry_t** create_table()
 
 	int i;
 	
-        /* For The Initial For Row We Need To Initialize All With Null */
+     /* For The Initial For Row We Need To Initialize All With Null */
     for( i = 0; i < CAPACITY; i++ )
 	{
 		htp[i] = NULL;
@@ -55,6 +55,7 @@ uint32_t hash( char *lexeme )
 }
 
 /*Proceed To For An Entry Of A Lexeme,Token Pair We Need To Get*/
+
 entry_t *create_entry( char *lexeme, int token_name )
 {
 	entry_t *newentry;
@@ -75,6 +76,7 @@ entry_t *create_entry( char *lexeme, int token_name )
 }
 
 /* Searching For Entries Containing The Lexeme.*/
+
 entry_t* search( entry_t** hash_table_ptr, char* lexeme )
 {
 	uint32_t idx = 0;
@@ -99,6 +101,7 @@ entry_t* search( entry_t** hash_table_ptr, char* lexeme )
 }
 
 /* Insert Single Entry In Hashtable*/
+
 void insert( entry_t** hash_table_ptr, char* lexeme, int token_name )
 {
      /*In Case Lexeme Is Already In Hash Table Return Nothing*/
