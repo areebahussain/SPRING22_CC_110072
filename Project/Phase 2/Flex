@@ -1,1 +1,124 @@
+/*Initiate The Parsing */
 
+%{
+ Libraries Included 
+#include stdlib.h
+#include stdio.h
+#include symboltable.h
+#include tokens.h
+
+/*Declaration of Initiative Variables*/
+entry_t symboltable;
+entry_t constanttable;
+
+/*Intialize of Variables*/
+int c_str = 0;
+
+%}
+
+/*Conditional Statements That We Use*/
+letter [a-zA-Z]
+digit [0-9]
+ws  [ trfv]+
+identifier (_{letter})({letter}{digit}_){0,31}
+hex [0-9a-f]
+
+/*Undivided And Unshared Statements*/
+
+%x CMNT
+%x PREPROC
+
+%%
+
+
+/*Usual Keywords or Characters Statements*/
+
+int                             {printf(t%-30s  %3dn,yytext,INT);}
+long                            {printf(t%-30s  %3dn,yytext,LONG);}
+long long                       {printf(t%-30s  %3dn,yytext,LONG_LONG);}
+short                           {printf(t%-30s  %3dn,yytext,SHORT);}
+signed                          {printf(t%-30s  %3dn,yytext,SIGNED);}
+unsigned                        {printf(t%-30s  %3dn,yytext,UNSIGNED);}
+for                             {printf(t%-30s  %3dn,yytext,FOR);}
+break                           {printf(t%-30s  %3dn,yytext,BREAK);}
+continue                        {printf(t%-30s  %3dn,yytext,CONTINUE);}
+if                              {printf(t%-30s  %3dn,yytext,IF);}
+else                            {printf(t%-30s  %3dn,yytext,ELSE);}
+return                          {printf(t%-30s  %3dn,yytext,RETURN);}
+
+{identifier}                      {printf(t%-30s  %3dn, yytext,IDENTIFIER);
+                                  insert( symbol_table,yytext,IDENTIFIER );}
+{ws}                              ;
+[+-][0][xX]{hex}+[lLuU]        {printf(t%-30s  %3dn, yytext,HEX_CONSTANT);
+									insert( constant_table,yytext,HEX_CONSTANT);}
+[+-]{digit}+[lLuU]              {printf(t%-30s  %3dn, yytext,DEC_CONSTANT);
+									insert( constant_table,yytext,DEC_CONSTANT);}
+                              {cmnt_strt = yylineno; BEGIN CMNT;}
+CMNT.{ws}                      ;
+CMNTn                          {yylineno++;}
+CMNT                        {BEGIN INITIAL;}
+CMNT                        {printf(Line %3d Nested comments are not valid!n,yylineno);}
+CMNTEOF                     {printf(Line %3d Unterminated commentn, cmnt_strt); yyterminate();}
+^#include                       {BEGIN PREPROC;}
+PREPROC[^n]+            {printf(t%-30s  %3dn,yytext,HEADER_FILE);}
+PREPROC{ws}                       ;
+PREPROC[^n]+              {printf(t%-30s  %3dn,yytext,HEADER_FILE);}
+PREPROCn                       {yylineno++; BEGIN INITIAL;}
+PREPROC.                        {printf(Line %3d Illegal header file format n,yylineno);}
+.                            ;
+
+[^n]     {
+
+  if(yytext[yyleng-2]=='')  check if it was an escaped quote 
+  {
+    yyless(yyleng-1);        push the quote back if it was escaped 
+    yymore();
+  }
+  else
+  insert( constant_table,yytext,STRING);
+ }
+
+[^n]$                     {printf(Line %3d Unterminated string %sn,yylineno,yytext);}
+{digit}+({letter}_)+	        {printf(Line %3d Illegal identifier name %sn,yylineno,yytext);}
+n                              {yylineno++;}
+--			                {printf(t%-30s  %3dn,yytext,DECREMENT);}
+++			                {printf(t%-30s  %3dn,yytext,INCREMENT);}
+-			                {printf(t%-30s  %3dn,yytext,PTR_SELECT);}
+&&			                {printf(t%-30s  %3dn,yytext,LOGICAL_AND);}
+			                {printf(t%-30s  %3dn,yytext,LOGICAL_OR);}
+=			                {printf(t%-30s  %3dn,yytext,LS_THAN_EQ);}
+=			                {printf(t%-30s  %3dn,yytext,GR_THAN_EQ);}
+==			                {printf(t%-30s  %3dn,yytext,EQ);}
+!=		                    {printf(t%-30s  %3dn,yytext,NOT_EQ);}
+;			                    {printf(t%-30s  %3dn,yytext,DELIMITER);}
+{                             {printf(t%-30s  %3dn,yytext,OPEN_BRACES);}
+}                             {printf(t%-30s  %3dn,yytext,CLOSE_BRACES);}
+,			                    {printf(t%-30s  %3dn,yytext,COMMA);}
+=			                    {printf(t%-30s  %3dn,yytext,ASSIGN);}
+(			                    {printf(t%-30s  %3dn,yytext,OPEN_PAR);}
+)			                    {printf(t%-30s  %3dn,yytext,CLOSE_PAR);}
+[                             {printf(t%-30s  %3dn,yytext,OPEN_SQ_BRKT);}
+]                             {printf(t%-30s  %3dn,yytext,CLOSE_SQ_BRKT);}
+-			                    {printf(t%-30s  %3dn,yytext,MINUS);}
++			                    {printf(t%-30s  %3dn,yytext,PLUS);}
+			                    {printf(t%-30s  %3dn,yytext,STAR);}
+		                        {printf(t%-30s  %3dn,yytext,FW_SLASH);}
+%			                    {printf(t%-30s  %3dn,yytext,MODULO);}
+			                    {printf(t%-30s  %3dn,yytext,LS_THAN);}
+			                    {printf(t%-30s  %3dn,yytext,GR_THAN);}
+.                               {printf(Line %3d Illegal character %sn,yylineno,yytext);}
+
+%%
+
+/*Main Scope From Where The Flex Call or Initiate*/
+int main()
+{
+  yyin=fopen(testcasestest-case-5.c,r);
+  symboltable=create_table();
+  constanttable=create_table();
+  yylex();
+  printf(ntSymbol Table);
+  display(symboltable);
+  printf(ntConstants Table);
+  display(constanttable);
+}
