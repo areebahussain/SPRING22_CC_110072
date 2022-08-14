@@ -14,6 +14,26 @@
            }
  	```
 
+-  Loops:
+       
+    - While-Loop:
+    
+   	```
+          while (true) {
+ 	      if (1 == 1)
+ 		 break;
+	      }
+	```
+
+    - For-Loop:
+
+	```
+        for (i = 0; i < max; i++ ){
+           
+         // Some-Condition
+      }
+	```
+
 -  Some statements:
 
     - Break Statement:
