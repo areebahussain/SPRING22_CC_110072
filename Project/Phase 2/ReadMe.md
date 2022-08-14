@@ -4,7 +4,7 @@
 
 This folder contains 3 files i.e.  
 
-| Files        |
+|Files        |
 |------------  |
 | Flex Code    |
 | Symbol Table |
