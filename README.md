@@ -1,7 +1,7 @@
 #
 # SPRING22_CC_110072
 
-
+## Group Memebers
 
 | Student Name  | Student ID |
 | ---- | --- | 
@@ -11,10 +11,16 @@
 | Junaid Furqan |  64044|
 | M. Bilal Ansari |  64434|
 
+## Project 
 
+| Phase   | Objective                                                                                                                                              |
+|---------|----------------------------------------------------------------------------------------------                                                          |
+| Phase-1 | Select a mini language and finding its specifications                                                                                                  |
+| Phase-2 | A flex code file (well documented and commented) the takes as input a program in the language we selected in phase 1 and outputs its tokens with video |
+| Phase-3 | Write YACC code that uses your code from phase 1 and translates a program written in programming language we chose in phase 1 to python code.          |
 
 #
-## Description 
+## Group Memeber's Description 
 
 ### Areeba Hussain (64057) *Leader* :
 I'm Areeba Hussain, BS-CS student in PAF-KIET. Currently completed my 7th semster and enrolled in the summer session of 2022, studying Compiler Construction and Network Programming.
