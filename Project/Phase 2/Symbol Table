@@ -16,6 +16,7 @@ struct entry_s
 typedef struct entry_s entry_t;
 
 /*Hash Table Creation*/
+
 entry_t** create_table()
 {
         /* Declare The Entry Of Indexes Pointer */
