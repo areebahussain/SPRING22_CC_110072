@@ -8,6 +8,7 @@
 /*Size of the Hash Table*/
 
 /* Struct And Hold Each Entry For Proceeding */
+
 struct entry_s
 {
 	char* lexeme; 
