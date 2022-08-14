@@ -1,7 +1,8 @@
 #
 # SPRING22_CC_110072
 
-# Mini C to Python compiler
+#
+## Mini C to Python compiler
 This is a mini compiler constructed as part of our Compiler Construction course for a subset of the C language (110072).
 
 It was constructed in three incremental phases, each of which contributed a critical component of the compiler.
