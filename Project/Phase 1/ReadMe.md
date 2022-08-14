@@ -4,6 +4,16 @@
 
 #### Code Example For The Selected Language:
 
+-  if-then-else:
+
+	```
+        if (!b || a > 10.0) 
+             exit;
+        else {
+            int c;
+           }
+ 	```
+
 -  Some statements:
 
     - Break Statement:
